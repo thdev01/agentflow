@@ -39,11 +39,10 @@ dependencies = [
 [project.optional-dependencies]
 openai = ["openai>=1.0.0"]
 anthropic = ["anthropic>=0.18.0"]
-ollama = ["ollama>=0.1.0"]
+ollama = []  # Uses httpx which is already a core dependency
 all = [
     "openai>=1.0.0",
     "anthropic>=0.18.0",
-    "ollama>=0.1.0",
 ]
 dev = [
     "pytest>=7.0.0",

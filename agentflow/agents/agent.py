@@ -65,7 +65,12 @@ class Agent:
                 from agentflow.llm.anthropic_provider import AnthropicProvider
 
                 self.llm = AnthropicProvider(model=llm)
+            elif any(model in llm.lower() for model in ["llama", "mistral", "codellama", "phi", "gemma", "qwen"]):
+                from agentflow.llm.ollama_provider import OllamaProvider
+
+                self.llm = OllamaProvider(model=llm)
             else:
+                # Default to OpenAI
                 self.llm = OpenAIProvider(model=llm)
         else:
             self.llm = llm

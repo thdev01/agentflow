@@ -178,6 +178,11 @@ agent = Agent(llm="gpt-3.5-turbo")
 agent = Agent(llm="claude-3-5-sonnet-20241022")
 agent = Agent(llm="claude-3-opus-20240229")
 
+# Ollama (local models - no API key needed!)
+agent = Agent(llm="llama2")
+agent = Agent(llm="mistral")
+agent = Agent(llm="codellama")
+
 # Custom provider
 from agentflow.llm import LLMProvider
 agent = Agent(llm=MyCustomProvider())
@@ -220,6 +225,7 @@ Check out the [`examples/`](examples/) directory for more:
 - [`simple_agent.py`](examples/simple_agent.py) - Basic agent with tools
 - [`multi_agent_team.py`](examples/multi_agent_team.py) - Supervisor coordinating multiple agents
 - [`async_agent.py`](examples/async_agent.py) - Async agent execution
+- [`ollama_agent.py`](examples/ollama_agent.py) - Using local LLMs with Ollama
 
 ---
 
@@ -231,7 +237,7 @@ Check out the [`examples/`](examples/) directory for more:
 - [x] Anthropic provider
 - [x] Supervisor orchestration
 - [x] Async support
-- [ ] Ollama provider (local LLMs)
+- [x] Ollama provider (local LLMs)
 - [ ] Memory system (short-term & long-term)
 - [ ] Observability & tracing
 - [ ] Hierarchical orchestration
