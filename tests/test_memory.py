@@ -2,6 +2,7 @@
 
 import tempfile
 from pathlib import Path
+from typing import List
 
 import pytest
 
@@ -95,7 +96,7 @@ def test_long_term_memory_keyword_search() -> None:
 def test_long_term_memory_with_embedding() -> None:
     """Test long-term memory with custom embedding function."""
 
-    def simple_embedding(text: str) -> list[float]:
+    def simple_embedding(text: str) -> List[float]:
         """Simple embedding: character counts as vector."""
         return [float(ord(c)) for c in text[:10].ljust(10)]
 
