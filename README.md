@@ -177,6 +177,31 @@ agent = Agent(
 )
 ```
 
+### 🧠 Memory Systems
+
+Multiple memory types for different use cases:
+
+```python
+from agentflow.memory import (
+    ShortTermMemory,      # Recent conversation history
+    LongTermMemory,       # Semantic search with embeddings
+    JSONMemoryStore,      # Persistent JSON storage
+    SQLiteMemoryStore     # Persistent SQLite storage
+)
+
+# Short-term memory with limits
+memory = ShortTermMemory(max_entries=100, max_age_seconds=3600)
+memory.add("User prefers concise answers", {"type": "preference"})
+
+# Long-term memory with semantic search
+memory = LongTermMemory(embedding_function=embed_fn)
+results = memory.search("Python programming", limit=5)
+
+# Persistent storage
+memory = JSONMemoryStore("./agent_memory.json")
+memory = SQLiteMemoryStore("./agent_memory.db")
+```
+
 ### 🤝 Multiple Orchestration Patterns
 
 - **Supervisor**: Central coordinator delegates tasks to specialized agents
@@ -245,6 +270,7 @@ Check out the [`examples/`](examples/) directory for more:
 - [`async_agent.py`](examples/async_agent.py) - Async agent execution
 - [`ollama_agent.py`](examples/ollama_agent.py) - Using local LLMs with Ollama
 - [`builtin_tools.py`](examples/builtin_tools.py) - Using built-in tools for file, web, and code operations
+- [`memory_agent.py`](examples/memory_agent.py) - Using memory systems for conversation history and persistence
 
 ---
 
@@ -258,7 +284,7 @@ Check out the [`examples/`](examples/) directory for more:
 - [x] Async support
 - [x] Ollama provider (local LLMs)
 - [x] Built-in tool library (file ops, web, code execution)
-- [ ] Memory system (short-term & long-term)
+- [x] Memory system (short-term, long-term, persistent storage)
 - [ ] Observability & tracing
 - [ ] Hierarchical orchestration
 - [ ] Peer-to-peer orchestration
