@@ -159,6 +159,24 @@ def my_tool(param1: str, param2: int) -> str:
     return f"Result: {param1} * {param2}"
 ```
 
+### 🧰 Built-in Tool Library
+
+Common tools ready to use:
+
+```python
+from agentflow.tools import (
+    read_file, write_file, list_files,    # File operations
+    web_search, fetch_url,                 # Web tools
+    execute_python, execute_shell          # Code execution (use with caution!)
+)
+
+agent = Agent(
+    name="assistant",
+    llm="gpt-4",
+    tools=[read_file, write_file, web_search]
+)
+```
+
 ### 🤝 Multiple Orchestration Patterns
 
 - **Supervisor**: Central coordinator delegates tasks to specialized agents
@@ -226,6 +244,7 @@ Check out the [`examples/`](examples/) directory for more:
 - [`multi_agent_team.py`](examples/multi_agent_team.py) - Supervisor coordinating multiple agents
 - [`async_agent.py`](examples/async_agent.py) - Async agent execution
 - [`ollama_agent.py`](examples/ollama_agent.py) - Using local LLMs with Ollama
+- [`builtin_tools.py`](examples/builtin_tools.py) - Using built-in tools for file, web, and code operations
 
 ---
 
@@ -238,11 +257,11 @@ Check out the [`examples/`](examples/) directory for more:
 - [x] Supervisor orchestration
 - [x] Async support
 - [x] Ollama provider (local LLMs)
+- [x] Built-in tool library (file ops, web, code execution)
 - [ ] Memory system (short-term & long-term)
 - [ ] Observability & tracing
 - [ ] Hierarchical orchestration
 - [ ] Peer-to-peer orchestration
-- [ ] Built-in tool library
 - [ ] Testing utilities
 - [ ] Documentation site
 
