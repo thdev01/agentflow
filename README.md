@@ -319,9 +319,10 @@ Check out the [`examples/`](examples/) directory for more:
 - [x] Built-in tool library (file ops, web, code execution)
 - [x] Memory system (short-term, long-term, persistent storage)
 - [x] Observability & tracing (logging, execution tracing, metrics)
+- [x] Comprehensive testing (memory, observability, tools)
+- [x] CI/CD with GitHub Actions (tests, linting, releases, PyPI publishing)
 - [ ] Hierarchical orchestration
 - [ ] Peer-to-peer orchestration
-- [ ] Testing utilities
 - [ ] Documentation site
 
 ---
