@@ -202,6 +202,38 @@ memory = JSONMemoryStore("./agent_memory.json")
 memory = SQLiteMemoryStore("./agent_memory.db")
 ```
 
+### 🔍 Observability & Tracing
+
+Built-in tools for debugging and monitoring:
+
+```python
+from agentflow.observability import (
+    AgentLogger,          # Structured logging
+    Tracer,              # Execution tracing
+    MetricsCollector     # Performance metrics
+)
+
+# Structured logging
+logger = AgentLogger("my_agent", level=LogLevel.INFO)
+logger.info("task_start", "Starting task", {"task_id": "123"})
+
+# Execution tracing
+tracer = Tracer("my_agent")
+trace_id = tracer.start_trace("Process order")
+with tracer.span("validate"):
+    # Your code here
+    pass
+tracer.end_trace()
+
+# Metrics collection
+metrics = MetricsCollector("my_agent")
+metrics.counter("requests.total")
+metrics.histogram("latency.ms", 123.45)
+metrics.start_timer("operation")
+# ... operation ...
+metrics.stop_timer("operation")
+```
+
 ### 🤝 Multiple Orchestration Patterns
 
 - **Supervisor**: Central coordinator delegates tasks to specialized agents
@@ -271,6 +303,7 @@ Check out the [`examples/`](examples/) directory for more:
 - [`ollama_agent.py`](examples/ollama_agent.py) - Using local LLMs with Ollama
 - [`builtin_tools.py`](examples/builtin_tools.py) - Using built-in tools for file, web, and code operations
 - [`memory_agent.py`](examples/memory_agent.py) - Using memory systems for conversation history and persistence
+- [`observability_demo.py`](examples/observability_demo.py) - Using logging, tracing, and metrics for debugging
 
 ---
 
@@ -285,7 +318,7 @@ Check out the [`examples/`](examples/) directory for more:
 - [x] Ollama provider (local LLMs)
 - [x] Built-in tool library (file ops, web, code execution)
 - [x] Memory system (short-term, long-term, persistent storage)
-- [ ] Observability & tracing
+- [x] Observability & tracing (logging, execution tracing, metrics)
 - [ ] Hierarchical orchestration
 - [ ] Peer-to-peer orchestration
 - [ ] Testing utilities
